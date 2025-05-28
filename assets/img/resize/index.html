@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Resize</title>
+  <style>
+	body
+		{font-family:arial;}
+	
+	h2, h3
+		{margin-left:45px}
+	
+	img
+		{width:768px; 
+         height:576px;}
+		 
+	figcaption
+		{margin-top:10px;
+		margin-bottom:50px;
+		width:768px}
+		 
+	.layer-opacity
+		{background-color:#111133;
+		 opacity:0.91;			
+         width:768px; 
+         height:576px; 
+         position:absolute;  
+         z-index:2;}
+		
+  </style>
+</head>
+
+<body>
+
+<h2>All vehicle photos should be placed in boxes with the ratio width/height=4/3</h2>
+
+<h3>For images that have a width/height ratio = 1.28-1.38, please use CSS property object-fit:cover</h3>
+
+<figure>
+  <img src="Triumph.jpg" style="object-fit:cover;">
+  <figcaption>Original size of the photo (width/height) 1600/1168=1.37 is beetween the range 1.28-1.38 therefore the CSS property object-fit:cover should be used here.</figcaption>
+</figure>
+
+
+<figure>
+  <img src="Jaguar.jpg" style="object-fit:cover;">
+  <figcaption>Original size of the photo (width/height) 1600/1200=1.33 is beetween the range 1.28-1.38 therefore the CSS property object-fit:cover should be used here.</figcaption>
+</figure>
+
+
+</br>
+<h3>For images that have a width/height ratio <> 1.28-1.38, please use three layers</h3>
+
+
+<p></p>
+
+<figure>
+      <div> 
+	     <img src="AlfaRomeo1.jpg"
+		 style = 
+         "position:absolute; 		 
+		 object-fit:canvas;
+         z-index:1;
+		 display:block;">
+      </div>
+
+
+      <div class="layer-opacity"></div>
+      
+
+      
+      <div> 
+	     <img src="AlfaRomeo1.jpg"
+		 style = "position:relative; 
+		 object-fit:contain;
+         z-index:3;
+		 display:block;">
+      </div>
+	  
+	<figcaption>The original image size (width/height) 850/400=1.78 is not between 1.28 and 1.38 so please use three layers. The lowest layer with the photo, with the CSS property object-fit:canvas. The middle layer with the background, with a little transparency, CSS property background-color:#111133; opacity:0.91. The topmost layer with the photo, with CSS property object-fit:contain.</figcaption>
+</figure>
+
+
+<figure>
+      <div > 
+	     <img src="CadillacDeville.jpg"
+		 style = "position:absolute;		 
+		 object-fit:canvas;
+         z-index:1;">
+      </div>
+
+
+	<div class="layer-opacity"></div>
+      
+
+      
+      <div> 
+	     <img src="CadillacDeville.jpg"
+		 style = "position:relative; 
+		 object-fit:contain;
+         z-index:3;">
+		</div>
+	<figcaption>The original image size (width/height) 1600/1600=1 is not between 1.28 and 1.38 so please use three layers. The lowest layer with the photo, with the CSS property object-fit:canvas. The middle layer with the background, with a little transparency, CSS property background-color:#111133; opacity:0.91. The topmost layer with the photo, with CSS property object-fit:contain.</figcaption>
+</figure>
+
+
+
+</body>
+</html>

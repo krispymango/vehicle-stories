@@ -1,0 +1,42 @@
+RewriteEngine on
+
+ErrorDocument 404 http://gci.testapps.com/404
+
+php_flag output_buffering on
+
+RewriteEngine on
+
+RewriteRule ^([^.?]+)$ %{REQUEST_URI}.php [L]
+
+RewriteCond %{THE_REQUEST} "^[^ ]* .*?\.php[? ].*$" [NC]
+
+RewriteRule .* - [L,R=404]
+
+
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteCond %{REQUEST_FILENAME} !-l
+
+RewriteRule ^([0-9a-zA-Z]+)/([\s\S]+) profile.php?u_id=$1&name=$2 [L,QSA]
+
+RewriteRule ^vehicle_details/([0-9a-zA-Z]+)/([0-9a-zA-Z]+) vehicle_details.php?id=$1&name=$2 [L,QSA]
+
+
+
+RedirectMatch 301 /app/database/connection/conn.php http://localhost/vehicle_stories
+
+RedirectMatch 301 /app/database/db/adminDb.php http://localhost/vehicle_stories
+
+RedirectMatch 301 /app/database/db/db.php http://localhost/vehicle_stories
+
+RedirectMatch 301 /app/database/db/userDb.php http://localhost/vehicle_stories
+
+RedirectMatch 301 /app/helpers/api/properties.json http://localhost/vehicle_stories
+
+RedirectMatch 301 /controllers/credential.php http://localhost/vehicle_stories
+
+RedirectMatch 301 /app/helpers/api/hghProperties.json http://localhost/vehicle_stories
